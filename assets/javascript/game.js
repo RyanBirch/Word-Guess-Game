@@ -10,6 +10,7 @@ let currentWordText = document.getElementById("current-word-text")
 let guessesRemainingText = document.getElementById("guesses-remaining-text")
 let lettersGuessedText = document.getElementById("letters-guessed-text")
 let gameStatus = document.getElementById("game-status")
+let alert = document.getElementById("alert")
 
 // initial game state
 let wins = 0
@@ -46,12 +47,16 @@ function reset() {
 
 // checks to see if chosen letter is in the word
 function isCorrect(action, currentWord) {
+  /*
   for (let i = 0; i < currentWord.length; i++) {
     if (action === currentWord[i])
       return true
   }
 
   return false
+  */
+
+  return currentWord.includes(action)
 }
 
 // increments letter count to determine if all letters have been guessed
@@ -68,12 +73,16 @@ function letterCount(action, currentWord) {
 
 // checks to see if chosen letter has already been chosen
 function unused(action, usedLetters) {
+  /*
   for (let i = 0; i < usedLetters.length; i++) {
     if (action === usedLetters[i])
       return false
   }
 
   return true
+  */
+
+  return !usedLetters.includes(action)
 }
 
 // reveals letters that were guessed correctly
