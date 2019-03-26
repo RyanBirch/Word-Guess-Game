@@ -27,6 +27,7 @@ lettersGuessedText.textContent = ""
 gameStatus.textContent = ""
 let count = 0
 let usedLetters = []
+let allLetters = []
 
 
 // resets the game after a win or loss
@@ -43,19 +44,11 @@ function reset() {
   gameStatus.textContent = ""
   count = 0
   usedLetters = []
+  allLetters = []
 }
 
 // checks to see if chosen letter is in the word
 function isCorrect(action, currentWord) {
-  /*
-  for (let i = 0; i < currentWord.length; i++) {
-    if (action === currentWord[i])
-      return true
-  }
-
-  return false
-  */
-
   return currentWord.includes(action)
 }
 
@@ -72,17 +65,8 @@ function letterCount(action, currentWord) {
 }
 
 // checks to see if chosen letter has already been chosen
-function unused(action, usedLetters) {
-  /*
-  for (let i = 0; i < usedLetters.length; i++) {
-    if (action === usedLetters[i])
-      return false
-  }
-
-  return true
-  */
-
-  return !usedLetters.includes(action)
+function unused(action, allLetters) {
+  return !allLetters.includes(action)
 }
 
 // reveals letters that were guessed correctly
@@ -108,13 +92,16 @@ document.onkeyup = function(event) {
   // if player has guesses remaining, game continues
   if (guessesRemaining > 0 && currentPlace !== currentWord.length) {
     let action = event.key
+    alert.textContent = ""
 
     //player guesses right
-    if (isCorrect(action, currentWord) && unused(action, usedLetters)) {
+    if (isCorrect(action, currentWord) && unused(action, allLetters)) {
       usedLetters.push(action)
+      allLetters.push(action)
       count = letterCount(action, currentWord)
       currentPlace += count
       reveal(action, currentWord, currentWordText, usedLetters)
+      lettersGuessedText.textContent += " " + action
 
       //player wins
       if (currentPlace === currentWord.length) {
@@ -122,17 +109,17 @@ document.onkeyup = function(event) {
         wins++
         winsText.textContent = wins
       }
-    } else {
+    } else if (!isCorrect(action, currentWord) && unused(action, allLetters)) {
       guessesRemaining--
       guessesRemainingText.textContent = guessesRemaining
+      allLetters.push(action)
+      lettersGuessedText.textContent += " " + action
 
       // player loses
       if (guessesRemaining === 0 && currentPlace !== currentWord.length) {
         gameStatus.textContent = `You lose :( The word was ${currentWord}. Press any key to play again`
       }
-    }
-
-    lettersGuessedText.textContent += " " + action
+    } else alert.textContent = "You already chose that letter"
   }
 
   // player has option to reset when game ends
