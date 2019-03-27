@@ -9,23 +9,36 @@
 </head>
 <body>
 
-  <h1>Hangman: Sports Edition!</h1>
+  <div class="header">
+    <span class="header-logo-1">
+      <img src="http://worldartsme.com/images/spring-sports-clipart-1.jpg" height="125" width="150">
+    </span>
+    <h1 class="header-text">Hangman: <span class="subtitle">Sports Edition!</span></h1>
+    <span class="header-logo-2">
+      <img src="http://worldartsme.com/images/all-sports-clipart-1.jpg" height="125" width="150">
+    </span>
+  </div>
+
   <h2>Press any key to guess a letter</h2>
 
-  <h2>Wins: </h2>
-  <h2 id="wins-text"></h2>
+  <div class="left-block">
+    <h2>Wins: </h2>
+    <h2 id="wins-text"></h2>
 
-  <h2>Current Word: </h2>
-  <h2 id="current-word-text"></h2>
+    <h2>Current Word: </h2>
+    <h2 id="current-word-text"></h2>
 
-  <h2>Guesses Remaining: </h2>
-  <h2 id="guesses-remaining-text"></h2>
+    <h2>Guesses Remaining: </h2>
+    <h2 id="guesses-remaining-text"></h2>
 
-  <h2>Letters already guessed: </h2>
-  <h2 id="letters-guessed-text"></h2>
+    <h2>Letters already guessed: </h2>
+    <h2 id="letters-guessed-text"></h2>
+  </div>
 
-  <h1 id="game-status"></h1>
-  <h1 id="alert"></h1>
+  <div class="right-block">
+    <h1 id="game-status"></h1>
+    <h1 id="alert"></h1>
+  </div>
 
   <script src="assets/javascript/game.js"></script>
 </body>

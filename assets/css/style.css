@@ -5,3 +5,37 @@
 #alert {
   color: #2390b9;
 }
+
+body {
+  text-align: center;
+}
+
+.header {
+  position: relative;
+}
+
+.header-text {
+  display: inline-block;
+  font-size: 4.5em;
+  font-family: 'Stencil Std', fantasy;
+  font-weight: bold;
+}
+
+.header-logo-1 {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 2.5%;
+  margin-top: -75px; /* Half the height */
+}
+
+.header-logo-2 {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  margin-top: -75px; /* Half the height */
+}
+
+.subtitle {
+  font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+}
