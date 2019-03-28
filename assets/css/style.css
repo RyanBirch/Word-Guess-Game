@@ -20,6 +20,22 @@ html, body {
   padding: 0;
   min-height: 100vh;
   width: 100%;
+  position: relative;
+  display: block;
+}
+
+body::after {
+  content: "";
+  background-image: url('../images/img_5.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 .header {
@@ -62,67 +78,22 @@ html, body {
   bottom: 5px;
 }
 
-.wins, .guesses_rem, .letters_guessed {
+.wins, .guesses-rem, .letters-guessed {
   display: block;
   float: left;
   width: 33.3vw;
 }
 
-.main_imgs {
+.main-imgs {
   display: block;
   float: left;
   width: 33.3vw;
 }
 
-.current_word {
+.current-word {
   font-size: 1.5em;
   margin: 2em 0 0 0;
   display: block;
   float: left;
   width: 33.3vw;
 }
-
-.alerts {
-
-}
-
-/*
-.empty-block-1 {
-  display: block;
-  float: left;
-  width: 25vw;
-  height: 68vh;
-  background-image: url('https://st.depositphotos.com/1765462/1282/v/450/depositphotos_12822682-stock-illustration-balls-seamless-pattern-10eps.jpg');
-  opacity: 0.2;
-}
-
-.game-block {
-  display: block;
-  float: left;
-  width: 50vw;
-}
-
-.empty-block-2 {
-  display: block;
-  float: left;
-  width: 25vw;
-  height: 68vh;
-  background-image: url('https://st.depositphotos.com/1765462/1282/v/450/depositphotos_12822682-stock-illustration-balls-seamless-pattern-10eps.jpg');
-  opacity: 0.2;
-}
-*/
-
-/*
-.left-block {
-  float: left;
-  position: absolute;
-  left: 15%;
-}
-
-.right-block {
-  float: right;
-  position: absolute;
-  right: 15%;
-  max-width: 50%;
-}
-*/

@@ -109,7 +109,7 @@ document.onkeyup = function(event) {
         wins++
         winsText.textContent = wins
       }
-    } else if (!isCorrect(action, currentWord) && unused(action, allLetters)) {
+    } else if (!isCorrect(action, currentWord) && unused(action, allLetters)) { // player guesses wrong
       guessesRemaining--
       guessesRemainingText.textContent = guessesRemaining
       allLetters.push(action)
@@ -120,8 +120,5 @@ document.onkeyup = function(event) {
         gameStatus.textContent = `You lose :( The word was ${currentWord}. Press any key to play again`
       }
     } else alert.textContent = "You already chose that letter"
-  }
-
-  // player has option to reset when game ends
-  else reset()
+  } else reset() // player has option to reset when game ends
 }
