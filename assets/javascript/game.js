@@ -4,12 +4,12 @@ let wordArray = ["archer", "athlete", "baseball", "bowling", "basketball", "bill
   "kickball", "lacrosse", "outfield", "player", "quarterback", "rugby", "snowboarding", "swimming",
   "taekwondo", "triathlon", "weightlifting", "wrestling"]
 
-
 let winsText = document.getElementById("wins-text")
 let currentWordText = document.getElementById("current-word-text")
 let guessesRemainingText = document.getElementById("guesses-remaining-text")
 let lettersGuessedText = document.getElementById("letters-guessed-text")
-let gameStatus = document.getElementById("game-status")
+let winStatus = document.getElementById("win-status")
+let lossStatus = document.getElementById("loss-status")
 let alert = document.getElementById("alert")
 
 // initial game state
@@ -24,7 +24,8 @@ for (let i = 0; i < currentWord.length; i++) {
   currentWordText.textContent += "_ "
 }
 lettersGuessedText.textContent = ""
-gameStatus.textContent = ""
+winStatus.textContent = ""
+lossStatus.textContent = ""
 let count = 0
 let usedLetters = []
 let allLetters = []
@@ -41,7 +42,8 @@ function reset() {
     currentWordText.textContent += "_ "
   }
   lettersGuessedText.textContent = ""
-  gameStatus.textContent = ""
+  winStatus.textContent = ""
+  lossStatus.textContent = ""
   count = 0
   usedLetters = []
   allLetters = []
@@ -70,7 +72,7 @@ function unused(action, allLetters) {
 }
 
 // reveals letters that were guessed correctly
-function reveal(action, currentWord, currentWordText, usedLetters) {
+function reveal(currentWord, currentWordText, usedLetters) {
   currentWordText.textContent = ""
 
   for (let i = 0; i < currentWord.length; i++) {
@@ -86,10 +88,9 @@ function reveal(action, currentWord, currentWordText, usedLetters) {
 // start a fresh game
 reset()
 
-
 document.onkeyup = function(event) {
 
-  // if player has guesses remaining, game continues
+  // if player has guesses remaining, and hasn't won, game continues
   if (guessesRemaining > 0 && currentPlace !== currentWord.length) {
     let action = event.key
     alert.textContent = ""
@@ -100,12 +101,12 @@ document.onkeyup = function(event) {
       allLetters.push(action)
       count = letterCount(action, currentWord)
       currentPlace += count
-      reveal(action, currentWord, currentWordText, usedLetters)
+      reveal(currentWord, currentWordText, usedLetters)
       lettersGuessedText.textContent += " " + action
 
       //player wins
       if (currentPlace === currentWord.length) {
-        gameStatus.textContent = "You win! Press any key to play again"
+        winStatus.textContent = "You win! Press any key to play again"
         wins++
         winsText.textContent = wins
       }
@@ -117,7 +118,7 @@ document.onkeyup = function(event) {
 
       // player loses
       if (guessesRemaining === 0 && currentPlace !== currentWord.length) {
-        gameStatus.textContent = `You lose :( The word was ${currentWord}. Press any key to play again`
+        lossStatus.textContent = `You lose :( The word was ${currentWord}. Press any key to play again`
       }
     } else alert.textContent = "You already chose that letter"
   } else reset() // player has option to reset when game ends

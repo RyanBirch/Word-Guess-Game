@@ -1,5 +1,9 @@
-#game-status {
+#win-status {
   color: #3df25a;
+}
+
+#loss-status {
+  color: #eb2f2f;
 }
 
 #alert {
