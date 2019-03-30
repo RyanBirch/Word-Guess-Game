@@ -85,8 +85,6 @@ function reveal(currentWord, currentWordText, usedLetters) {
 
 }
 
-// start a fresh game
-reset()
 
 document.onkeyup = function(event) {
 
@@ -118,7 +116,7 @@ document.onkeyup = function(event) {
 
       // player loses
       if (guessesRemaining === 0 && currentPlace !== currentWord.length) {
-        lossStatus.textContent = `You lose :( The word was ${currentWord}. Press any key to play again`
+        lossStatus.textContent = `You lose :(  The word was ${currentWord}. Press any key to play again`
       }
     } else alert.textContent = "You already chose that letter"
   } else reset() // player has option to reset when game ends
